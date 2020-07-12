@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap');
+
+*{
+    font-family: 'Zilla Slab', serif;
+    font-weight: bold;
+}
+
+.container{
+    width: 20%;
+    margin-top: 200px;
+}
+.logo{
+    width: 320px;
+}
+.button-login{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.pass{
+    color: grey;
+    font-size: 13px;
+    float: right;
+    margin-bottom: 10px;
+}
