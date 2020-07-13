@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
-import { Link, BrowserRouter, Route, Router } from 'react-router-dom';
 import { Container, Row, Col, Form, FormGroup, Input, Button } from 'reactstrap';
-import HelloWorld from '../../pages/auth/HelloWorld';
 
 import logo from '../../assets/draw.png'
-import './FormLogin.css'
+import './FormCadastro.css'
 import firebase from '../../firebaseConfig';
 
-function FormLogin(){
-    
+function FormCadastro(){
+
 const [email, setEmail] = useState('0');
 const [senha, setSenha] = useState('0');
 
@@ -20,17 +18,13 @@ function handleChangeSenha(event){
     setSenha(event.target.value)
 }
 
-function login(){
-    firebase.auth().signInWithEmailAndPassword(email, senha)
+function cadastrar(){
+    firebase.auth().createUserWithEmailAndPassword(email, senha)
     .then(function(user){
-        return (
-            <Router>
-            <Route component={ HelloWorld } path="/hello" />
-        </Router>
-        );
+        
     })
     .catch(function(error) {
-        alert("ERRO")
+        console.log(error)
     });
 }
 
@@ -46,16 +40,12 @@ function login(){
                         <FormGroup>
                             <Input type="password" name="senha" placeholder="Senha" onChange={handleChangeSenha}/>
                         </FormGroup>
-                        <a className="pass" href="#">Esqueceu sua senha?</a>
-                        <Button className="button-login" color="success" onClick={login}>Login</Button>
+                        <Button className="button-login" color="success" onClick={cadastrar}>Cadastrar</Button>
                     </Form>
                 </Col>
             </Row>
-            <BrowserRouter>
-                <p>Ainda não possui conta? <Link to="/cadastro">Cadastre-se</Link></p>
-            </BrowserRouter>
         </Container>
     );
 }
 
-export default FormLogin;
+export default FormCadastro;
